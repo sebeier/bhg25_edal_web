@@ -1,0 +1,40 @@
+name: Generate PDF
+on:
+  push:
+    branches: [ main ]
+jobs:
+  gen-pdf:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    - name: biohackathon name given?
+      run: |
+        sed -n '/^---$/,/^---$/{//b;p}' paper/paper.md | grep biohackathon_name
+    - name: biohackathon location given?
+      run: |
+        sed -n '/^---$/,/^---$/{//b;p}' paper/paper.md | grep biohackathon_location
+    - name: biohackathon url given?
+      run: |
+        sed -n '/^---$/,/^---$/{//b;p}' paper/paper.md | grep biohackathon_url
+    - name: Git repository given?
+      run: |
+        sed -n '/^---$/,/^---$/{//b;p}' paper/paper.md | grep git_url
+    - uses: kohlerdominik/docker-run-action@v2.0.0
+      with:
+        image: ghcr.io/biohackrxiv/bhxiv-gen-pdf:master
+        volumes: ${{ github.workspace }}:/work
+        workdir: /work
+        run: |
+          gen-pdf paper
+    - name: Create info file
+      run: |
+         echo -e "ref: $GITHUB_REF \ncommit: $GITHUB_SHA\nbuild: $(date +"%Y-%m-%dT%H:%M:%SZ")" \
+         > info.txt
+    - name: Upload generated PDF as artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: PDF and info.txt
+        path: |
+          paper/paper.pdf
+          info.txt
