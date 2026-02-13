@@ -120,36 +120,34 @@ We developed a prototype for a multi-step web wizard designed to replace the leg
  
 1. Legal Clearance (DLA): Users are presented with the Data Deposit & License Agreement (DLA) immediately upon initiation to ensure legal compliance and clear terms of service before any data entry occurs.
 
-    ![web-client-1](https://hackmd.io/_uploads/BJKrvAGmWl.png)
+ 
 
 2. Metadata Provision: The interface prompts users for essential metadata to ensure the dataset is findable and reusable.
     * **Basic Info:** Users provide a descriptive title and abstract.
     * **License Selection:** Users select an appropriate license to define usage rights.
 
-![web-client-2](https://hackmd.io/_uploads/SyBcDAG7-g.png)
+
 
 3. Subject Management: Using the [TS4NFDI Widget](https://ts4nfdi.github.io/terminology-service-suite/comp/latest/?path=/docs/html_search-autocompletewidget--docs) for auto completion an ontology lookup is done on the [DataPLANT ontology collection](https://terminology.tib.eu/ts/ontologies?and=false&page=1&collection=DataPLANT&sortedBy=title&size=10) hosted by TIB to allow standardized spellings of the subjects. For terms not yet available in an ontology, the component allows to create custom subject terms instead.
 
-![web-client-3](https://hackmd.io/_uploads/ryLLKAfQWl.png)
+
 
 4. Creator Management: A dedicated interface was built to manage author information, addressing the need for precise attribution.
     * **Roles:** The tool enforces the inclusion of at least one **Creator** while allowing for multiple additional **Creators** or **Contributors**.
     * **Persistent Identifiers:** We integrated fields for [ORCID](https://orcid.org/) and [ROR IDs](https://ror.org/) to ensure unambiguous identification of authors and their affiliations.
     * **User Sync:** A "Sync signed in user info" feature allows users to auto-populate fields based on their login credentials.
 
-![web-client-4](https://hackmd.io/_uploads/Hk1vYAG7Wx.png)
-![web-client-5](https://hackmd.io/_uploads/SJxDFRM7Zl.png)
+
 
 5. Data Upload: The tool offers two upload methods catering to different user needs, which will be explained subsequently. We implemented specific validation logic, such as blocking the upload of temporary or hidden files (e.g. `*.xlsx~`) and discouraging pre-zipped archives in favor of open folder structures to enhance FAIRness.
     * **Local Upload:** Users can upload local files directly via their browser. The tool verifies file integrity and preserves relative directory paths, which is crucial for complex data structures.
     * **S3 Access:** For larger datasets, users can provide the credentials for an object store via a S3-compatible bucket.
 
-![web-client-6](https://hackmd.io/_uploads/H1TPtAMmZg.png)
-![web-client-7](https://hackmd.io/_uploads/B1bk30Gm-g.png)
+
 
 6. Preview: Before finally submitting the dataset, a citation preview is rendered. This preview provides a quick check if the entered information contains any typos or errors. The submission process completes with confirming once again the DLA.
 
-![web-client-8](https://hackmd.io/_uploads/rJ-W30fmbe.png)
+
 
 ## (2) Integration with PLANTdataHUB
 
