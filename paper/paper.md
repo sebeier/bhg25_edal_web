@@ -83,9 +83,9 @@ affiliations:
 date: 5 December 2025
 cito-bibliography: paper.bib
 event: BH25DE
-biohackathon_name: "BioHackathon Germany 2025"
-biohackathon_url:   "https://www.denbi.de/de-nbi-events/1840-4th-biohackathon-germany"
-biohackathon_location: "Walsrode, Germany, 2025"
+biohackathon_name: "4th BioHackathon Germany"
+biohackathon_url: "https://www.denbi.de/de-nbi-events/1840-4th-biohackathon-germany"
+biohackathon_location: "Walsrode, Germany"
 group: Project 8
 # URL to project git repo --- should contain the actual paper.md:
 git_url: https://github.com/sebeier/bhg25_edal_web
