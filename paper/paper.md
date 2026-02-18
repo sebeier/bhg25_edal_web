@@ -117,39 +117,39 @@ Following the mentioned objectives, we split our work during the BioHackathon in
 
 We developed a prototype for a multi-step web wizard designed to replace the legacy desktop client. It guides the user through the submission process in six steps:
 
-![web-client-1](/paper/web-client-1.png)
+![web-client-1](web-client-1.png)
  
 1. Legal Clearance (DLA): Users are presented with the Data Deposit & License Agreement (DLA) immediately upon initiation to ensure legal compliance and clear terms of service before any data entry occurs.
 
-![web-client-2](/paper/web-client-2.png)
+![web-client-2](web-client-2.png)
 
 2. Metadata Provision: The interface prompts users for essential metadata to ensure the dataset is findable and reusable.
     * **Basic Info:** Users provide a descriptive title and abstract.
     * **License Selection:** Users select an appropriate license to define usage rights.
 
-![web-client-3](/paper/web-client-3.png)
+![web-client-3](web-client-3.png)
 
 3. Subject Management: Using the [TS4NFDI Widget](https://ts4nfdi.github.io/terminology-service-suite/comp/latest/?path=/docs/html_search-autocompletewidget--docs) for auto completion an ontology lookup is done on the [DataPLANT ontology collection](https://terminology.tib.eu/ts/ontologies?and=false&page=1&collection=DataPLANT&sortedBy=title&size=10) hosted by TIB to allow standardized spellings of the subjects. For terms not yet available in an ontology, the component allows to create custom subject terms instead.
 
-![web-client-4](/paper/web-client-4.png)
+![web-client-4](web-client-4.png)
 
 4. Creator Management: A dedicated interface was built to manage author information, addressing the need for precise attribution.
     * **Roles:** The tool enforces the inclusion of at least one **Creator** while allowing for multiple additional **Creators** or **Contributors**.
     * **Persistent Identifiers:** We integrated fields for [ORCID](https://orcid.org/) and [ROR IDs](https://ror.org/) to ensure unambiguous identification of authors and their affiliations.
     * **User Sync:** A "Sync signed in user info" feature allows users to auto-populate fields based on their login credentials.
 
-![web-client-5](/paper/web-client-5.png)
-![web-client-6](/paper/web-client-6.png)
+![web-client-5](web-client-5.png)
+![web-client-6](web-client-6.png)
 
 5. Data Upload: The tool offers two upload methods catering to different user needs, which will be explained subsequently. We implemented specific validation logic, such as blocking the upload of temporary or hidden files (e.g. `*.xlsx~`) and discouraging pre-zipped archives in favor of open folder structures to enhance FAIRness.
     * **Local Upload:** Users can upload local files directly via their browser. The tool verifies file integrity and preserves relative directory paths, which is crucial for complex data structures.
     * **S3 Access:** For larger datasets, users can provide the credentials for an object store via a S3-compatible bucket.
 
-![web-client-7](/paper/web-client-7.png)
+![web-client-7](web-client-7.png)
 
 6. Preview: Before finally submitting the dataset, a citation preview is rendered. This preview provides a quick check if the entered information contains any typos or errors. The submission process completes with confirming once again the DLA.
 
-[web-client-1](/paper/web-client-8.png)
+[web-client-1](web-client-8.png)
 
 ## (2) Integration with PLANTdataHUB
 
