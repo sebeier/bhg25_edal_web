@@ -149,7 +149,7 @@ We developed a prototype for a multi-step web wizard designed to replace the leg
 
 6. Preview: Before finally submitting the dataset, a citation preview is rendered. This preview provides a quick check if the entered information contains any typos or errors. The submission process completes with confirming once again the DLA.
 
-[web-client-1](web-client-8.png)
+![web-client-1](web-client-8.png)
 
 ## (2) Integration with PLANTdataHUB
 
@@ -234,14 +234,14 @@ To ensure sustainable usage of the new tools as well as improve the existing doc
 
 We set up a dedicated [e!DAL-PGP Knowledge Base](https://ipk-bit.github.io/edal-pgp-knowledgebase/) to act as the central location for all user and developer documentation, FAQs, and best practice guides. It builds on the JavaScript framework [ASTRO](https://astro.build/) and the [vue](https://vuejs.org/)-based  theme [Starlight](https://starlight.astro.build/) and partially reproduces customizations such as styling and reusable components of the [DataPLANT Knowledge Base](https://nfdi4plants.org/nfdi4plants.knowledgebase/). The intuitive structure and markdown-supported documentation of ASTRO has long-term proven as a lightweight platform for user-appealing knowledge collection and presentation, for content-providers of different skill levels in web development. During the week we updated, transfered and re-wrote major sections of the current [e!DAL](https://edal.ipk-gatersleben.de) and [e!DAL-PGP](https://edal-pgp.ipk-gatersleben.de) websites. Open source, community-tailored contributions are facilitated via the [GitHub repository](https://github.com/IPK-BIT/edal-pgp-knowledgebase) and encouraged through a dedicated contribution guide as well as an open, crediting license [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/) and visibility of contributing authors. After finalization, the knowledge base will merge and replace the exisiting websites.
 
-### FAIR Cookbook DANIEL
+### FAIR Cookbook
 
 
-We drafted a new recipe titled *"Publishing Plant Research Data via the e!DAL-PGP Repository"*. This document guides users through the submission wizard, explaining the importance of specific metadata fields in the context of FAIR data principles.
+We drafted a new recipe titled *"Publishing Plant Research Data via the e!DAL-PGP Repository"*. This document guides users through the submission wizard, explaining the importance of specific metadata fields in the context of FAIR data principles. We will open a pull request to get reviewed by the FAIR Cooknbook community and get a first version released. This will be later extended together with the release of the knowledge base.
 
 ### RDMkit & Guidelines
 
-We reviewed existing guidelines and identified gaps in the current interface to be addressed in the new GUI design.
+We reviewed existing guidelines and identified gaps in the current interface to be addressed in the new GUI design. We were not able to work on this during this project and postponed this task.
 
 # Discussion
 
@@ -258,6 +258,6 @@ The drafted knowledge base will be continuously improved and replace the previou
 # Acknowledgements
 
 We thank the organizers of the BioHackathon Germany 2025. This work was funded by ELIXIR, the research infrastructure for life-science data; by the Federal Government of Germany and the county of North Rhine-Westphalia (de.NBI - the German Network for Bioinformatics Infrastructure);
-DA and MF were supported by the German Research Foundation (DFG) within the project “Establishment of the National Research Data Infrastructure (NFDI)” in the consortium FAIRagro (www.fairagro.net, project number 501899475), NFDI4Biodiversity (www.nfdi4biodiversity.org, project number 442032008) and DataPLANT (https://www.nfdi4plants.de/, project number 442077441).
+This work was also supported by the German Research Foundation (DFG) within the project “Establishment of the National Research Data Infrastructure (NFDI)” in the consortium FAIRagro (www.fairagro.net, project number 501899475), NFDI4Biodiversity (www.nfdi4biodiversity.org, project number 442032008) and DataPLANT (https://www.nfdi4plants.de/, project number 442077441).
 
 # References
