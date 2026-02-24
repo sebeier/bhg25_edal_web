@@ -32,9 +32,9 @@ authors:
     role: Conceptualisation, Software, Writing – original draft 
  
   - name: Kevin Schneider
-    orcid: PLEASE FILL
+    orcid: 0000-0002-2198-5262
     affiliation: 6
-    role: PLEASE FILL, Writing – original draft
+    role: Conceptualisation, Software, Writing – original draft
     
   - name: Helena Schnitzer
     orcid: 0000-0002-6382-9452
@@ -64,7 +64,7 @@ affiliations:
     ror: 02nv7yv05
     index: 3
   
-  - name: Cluster of Excellence on Plant Sciences (CEPLAS), Faculty of Mathematics and Natural Science, Heinrich Heine University, Düsseldorf, Germany
+  - name: Cluster of Excellence on Plant Sciences (CEPLAS), Faculty of Mathematics and Natural Science, Heinrich Heine University Düseldorf, Düsseldorf, Germany
     ror: 034waa237
     index: 4 
     
@@ -72,8 +72,8 @@ affiliations:
     ror: 05gqaka33
     index: 5
     
-  - name: RPTU --> Kevin, Lukas
-    ror: 
+  - name: Computational Systems Biology, Rhineland-Palatinate Technical University, Kaiserslautern, Germany
+    ror: 01qrts582
     index: 6
     
   - name: Forschungszentrum Jülich GmbH - IBG-5; de.NBI & ELIXIR-DE
@@ -97,11 +97,11 @@ authors_short: Manuel Feser \emph{et al.}
 
 ## Introduction 
 
-As part of the BioHackathon Germany 2025, we here report about the progress of Project 8 - *Enhancing e!DAL-PGP: A Modern Data Submission Platform for Plant Science Research Data* during the event.
+As part of the BioHackathon Germany 2025, we report here about the progress of Project 8 - *Enhancing e!DAL-PGP: A Modern Data Submission Platform for Plant Science Research Data* during the event.
 
 The increasing volume of data generated in plant research underscores the necessity for efficient data management and sharing solutions. The de.NBI Service e!DAL-PGP [@citesAsRelated:Arend2016, Arend2020] serves as a critical research data repository, facilitating the storage, management, and dissemination of plant research data. However, the current implementation faces significant challenges concerning the submission process and the provision of a submission tool for different operating systems, which complicate user interactions and hinder data contribution.
 
-A primary issue with the existing e!DAL-PGP service is the cumbersome nature of maintaining and deploying a submission tool across various OS environments. This requirement necessitates extensive effort to build, test, and provide the application for each platform. Consequently, this fragmentation can lead to delays and inconsistencies in the submission process, ultimately hindering researchers from effectively submitting their valuable data to the repository. To address these challenges, this project proposes the development of a unified and user-friendly web submission tool that streamlines the data submission process to eliminate the complexities associated with OS-specific requirements and to ensure that all users can submit their data seamlessly. This simplifies the submission process and enhances usability, by focussing on improving the design and functionality. A well-structured and user-centric form is essential for facilitating accurate and complete data submissions. The current interface lacks features that enhance user experience, such as lookup services, contextual help, and clear instructions. By incorporating these elements, we aim to create a more efficient and engaging submission experience, encouraging researchers to contribute their valuable data without unnecessary complexity.
+A primary issue with the existing e!DAL-PGP service is the cumbersome nature of maintaining and deploying a submission tool across various OS environments. This requirement necessitates extensive effort to build, test, and provide the application for each platform. Consequently, this fragmentation can lead to delays and inconsistencies in the submission process, ultimately hindering researchers from effectively submitting their valuable data to the repository. To address these challenges, this project proposes the development of a unified and user-friendly web submission tool that streamlines the data submission process to eliminate the complexities associated with OS-specific requirements and to ensure that all users can submit their data seamlessly. This simplifies the submission process and enhances usability by focussing on improving the design and functionality. A well-structured and user-centric form is essential for facilitating accurate and complete data submissions. The current interface lacks features that enhance user experience, such as lookup services, contextual help, and clear instructions. By incorporating these elements, we aim to create a more efficient and engaging submission experience, encouraging researchers to contribute their valuable data without unnecessary complexity.
 
 This initiative aligns closely with the goals of de.NBI, which emphasizes the provision of high-quality bioinformatics services and the facilitation of FAIR Research Data Management (RDM). Enhancing the e!DAL-PGP service will streamline the data submission process and promote a culture of collaboration and data sharing within the plant research community. The project focused on three main objectives:
 
@@ -117,39 +117,39 @@ Following the mentioned objectives, we split our work during the BioHackathon in
 
 We developed a prototype for a multi-step web wizard designed to replace the legacy desktop client. It guides the user through the submission process in six steps:
 
-![web-client-1](web-client-1.png)
+![Screenshot of the 1st step of the data submission tool providing the Data Deposit & License Agreement (DLA) of the e!DAL-PGP repository](web-client-1.png)
  
 1. Legal Clearance (DLA): Users are presented with the Data Deposit & License Agreement (DLA) immediately upon initiation to ensure legal compliance and clear terms of service before any data entry occurs.
 
-![web-client-2](web-client-2.png)
+![Screenshot of the 2nd step of the data submission tool asking for basic metadata.](web-client-2.png)
 
 2. Metadata Provision: The interface prompts users for essential metadata to ensure the dataset is findable and reusable.
     * **Basic Info:** Users provide a descriptive title and abstract.
     * **License Selection:** Users select an appropriate license to define usage rights.
 
-![web-client-3](web-client-3.png)
+![Screenshot of the 3rd step of the data submission tool for selecting subjects.](web-client-3.png)
 
 3. Subject Management: Using the [TS4NFDI Widget](https://ts4nfdi.github.io/terminology-service-suite/comp/latest/?path=/docs/html_search-autocompletewidget--docs) for auto completion an ontology lookup is done on the [DataPLANT ontology collection](https://terminology.tib.eu/ts/ontologies?and=false&page=1&collection=DataPLANT&sortedBy=title&size=10) hosted by TIB to allow standardized spellings of the subjects. For terms not yet available in an ontology, the component allows to create custom subject terms instead.
 
-![web-client-4](web-client-4.png)
+![Screenshot of the 4th step of the data submission tool asking for providing author details.](web-client-4.png)
 
 4. Creator Management: A dedicated interface was built to manage author information, addressing the need for precise attribution.
     * **Roles:** The tool enforces the inclusion of at least one **Creator** while allowing for multiple additional **Creators** or **Contributors**.
     * **Persistent Identifiers:** We integrated fields for [ORCID](https://orcid.org/) and [ROR IDs](https://ror.org/) to ensure unambiguous identification of authors and their affiliations.
     * **User Sync:** A "Sync signed in user info" feature allows users to auto-populate fields based on their login credentials.
 
-![web-client-5](web-client-5.png)
-![web-client-6](web-client-6.png)
+![Screenshot of the 4th step of the data submission tool asking for adding further authors](web-client-5.png)
+![Screenshot of the 5th step of the data submission tool for selecting data files or folders.](web-client-6.png)
 
 5. Data Upload: The tool offers two upload methods catering to different user needs, which will be explained subsequently. We implemented specific validation logic, such as blocking the upload of temporary or hidden files (e.g. `*.xlsx~`) and discouraging pre-zipped archives in favor of open folder structures to enhance FAIRness.
     * **Local Upload:** Users can upload local files directly via their browser. The tool verifies file integrity and preserves relative directory paths, which is crucial for complex data structures.
     * **S3 Access:** For larger datasets, users can provide the credentials for an object store via a S3-compatible bucket.
 
-![web-client-7](web-client-7.png)
+![Screenshot of the 5th step of the data submission tool for selecting a S3 Access.](web-client-7.png)
 
 6. Preview: Before finally submitting the dataset, a citation preview is rendered. This preview provides a quick check if the entered information contains any typos or errors. The submission process completes with confirming once again the DLA.
 
-![web-client-1](web-client-8.png)
+![Screenshot of the 6th step of the data submission tool for showing final preview and initiating the upload process.](web-client-8.png)
 
 ## (2) Integration with PLANTdataHUB
 
@@ -232,10 +232,9 @@ To ensure sustainable usage of the new tools as well as improve the existing doc
 
 ### e!DAL-PGP Knowledge Base
 
-We set up a dedicated [e!DAL-PGP Knowledge Base](https://ipk-bit.github.io/edal-pgp-knowledgebase/) to act as the central location for all user and developer documentation, FAQs, and best practice guides. It builds on the JavaScript framework [ASTRO](https://astro.build/) and the [vue](https://vuejs.org/)-based  theme [Starlight](https://starlight.astro.build/) and partially reproduces customizations such as styling and reusable components of the [DataPLANT Knowledge Base](https://nfdi4plants.org/nfdi4plants.knowledgebase/). The intuitive structure and markdown-supported documentation of ASTRO has long-term proven as a lightweight platform for user-appealing knowledge collection and presentation, for content-providers of different skill levels in web development. During the week we updated, transfered and re-wrote major sections of the current [e!DAL](https://edal.ipk-gatersleben.de) and [e!DAL-PGP](https://edal-pgp.ipk-gatersleben.de) websites. Open source, community-tailored contributions are facilitated via the [GitHub repository](https://github.com/IPK-BIT/edal-pgp-knowledgebase) and encouraged through a dedicated contribution guide as well as an open, crediting license [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/) and visibility of contributing authors. After finalization, the knowledge base will merge and replace the exisiting websites.
+We set up a dedicated [e!DAL-PGP Knowledge Base](https://ipk-bit.github.io/edal-pgp-knowledgebase/) to act as the central location for all user and developer documentation, FAQs, and best practice guides. It builds on the JavaScript framework [ASTRO](https://astro.build/) and the [vue](https://vuejs.org/)-based  theme [Starlight](https://starlight.astro.build/) and partially reproduces customizations such as styling and reusable components of the [DataPLANT Knowledge Base](https://nfdi4plants.org/nfdi4plants.knowledgebase/) [@citesAsRelated:knowledgebase]. The intuitive structure and markdown-supported documentation of ASTRO has long-term proven as a lightweight platform for user-appealing knowledge collection and presentation, for content-providers of different skill levels in web development. During the week we updated, transfered and re-wrote major sections of the current [e!DAL](https://edal.ipk-gatersleben.de) and [e!DAL-PGP](https://edal-pgp.ipk-gatersleben.de) websites. Open source, community-tailored contributions are facilitated via the [GitHub repository](https://github.com/IPK-BIT/edal-pgp-knowledgebase) and encouraged through a dedicated contribution guide as well as an open, crediting license [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/) and visibility of contributing authors. After finalization, the knowledge base will merge and replace the exisiting websites.
 
 ### FAIR Cookbook
-
 
 We drafted a new recipe titled *"Publishing Plant Research Data via the e!DAL-PGP Repository"*. This document guides users through the submission wizard, explaining the importance of specific metadata fields in the context of FAIR data principles. We will open a pull request to get reviewed by the FAIR Cooknbook community and get a first version released. This will be later extended together with the release of the knowledge base.
 
@@ -258,6 +257,6 @@ The drafted knowledge base will be continuously improved and replace the previou
 # Acknowledgements
 
 We thank the organizers of the BioHackathon Germany 2025. This work was funded by ELIXIR, the research infrastructure for life-science data; by the Federal Government of Germany and the county of North Rhine-Westphalia (de.NBI - the German Network for Bioinformatics Infrastructure);
-This work was also supported by the German Research Foundation (DFG) within the project “Establishment of the National Research Data Infrastructure (NFDI)” in the consortium FAIRagro (www.fairagro.net, project number 501899475), NFDI4Biodiversity (www.nfdi4biodiversity.org, project number 442032008) and DataPLANT (https://www.nfdi4plants.de/, project number 442077441).
+This work was also supported by the German Research Foundation (DFG) within the project “Establishment of the National Research Data Infrastructure (NFDI)” in the consortium FAIRagro (www.fairagro.net, project number 501899475), NFDI4Biodiversity (www.nfdi4biodiversity.org, project number 442032008) and DataPLANT (https://www.nfdi4plants.de/, project number 442077441) and under Germany´s Excellence Strategy consortium CEPLAS (https://ceplas.eu, EXC-2048/1, project ID 390686111).
 
 # References
