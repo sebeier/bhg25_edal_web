@@ -119,37 +119,41 @@ We developed a prototype for a multi-step web wizard designed to replace the leg
 
 ![Screenshot of the 1st step of the data submission tool providing the Data Deposit & License Agreement (DLA) of the e!DAL-PGP repository](web-client-1.png)
  
-1. Legal Clearance (DLA): Users are presented with the Data Deposit & License Agreement (DLA) immediately upon initiation to ensure legal compliance and clear terms of service before any data entry occurs.
+1. Legal Clearance (DLA): Users are presented with the Data Deposit & License Agreement (DLA) immediately upon initiation to ensure legal compliance and clear terms of service before any data entry occurs (see **Figure 1**).
 
 ![Screenshot of the 2nd step of the data submission tool asking for basic metadata.](web-client-2.png)
 
-2. Metadata Provision: The interface prompts users for essential metadata to ensure the dataset is findable and reusable.
+2. Metadata Provision: The interface prompts users for essential metadata to ensure the dataset is findable and reusable (see **Figure 2**).
     * **Basic Info:** Users provide a descriptive title and abstract.
     * **License Selection:** Users select an appropriate license to define usage rights.
 
 ![Screenshot of the 3rd step of the data submission tool for selecting subjects.](web-client-3.png)
 
-3. Subject Management: Using the [TS4NFDI Widget](https://ts4nfdi.github.io/terminology-service-suite/comp/latest/?path=/docs/html_search-autocompletewidget--docs) for auto completion an ontology lookup is done on the [DataPLANT ontology collection](https://terminology.tib.eu/ts/ontologies?and=false&page=1&collection=DataPLANT&sortedBy=title&size=10) hosted by TIB to allow standardized spellings of the subjects. For terms not yet available in an ontology, the component allows to create custom subject terms instead.
+3. Subject Management: Using the [TS4NFDI Widget](https://ts4nfdi.github.io/terminology-service-suite/comp/latest/?path=/docs/html_search-autocompletewidget--docs) for auto completion an ontology lookup is done on the [DataPLANT ontology collection](https://terminology.tib.eu/ts/ontologies?and=false&page=1&collection=DataPLANT&sortedBy=title&size=10) hosted by TIB to allow standardized spellings of the subjects. For terms not yet available in an ontology, the component allows to create custom subject terms instead (see **Figure 3**).
+
+![Screenshot of the 4th step of the data submission tool asking for adding further authors.](web-client-5.png)
 
 ![Screenshot of the 4th step of the data submission tool asking for providing author details.](web-client-4.png)
 
-4. Creator Management: A dedicated interface was built to manage author information, addressing the need for precise attribution.
+4. Author Management: A dedicated interface was built to manage author information, addressing the need for precise attribution (see **Figure 4 and 5**).
     * **Roles:** The tool enforces the inclusion of at least one **Creator** while allowing for multiple additional **Creators** or **Contributors**.
     * **Persistent Identifiers:** We integrated fields for [ORCID](https://orcid.org/) and [ROR IDs](https://ror.org/) to ensure unambiguous identification of authors and their affiliations.
     * **User Sync:** A "Sync signed in user info" feature allows users to auto-populate fields based on their login credentials.
 
-![Screenshot of the 4th step of the data submission tool asking for adding further authors](web-client-5.png)
-![Screenshot of the 5th step of the data submission tool for selecting data files or folders.](web-client-6.png)
 
-5. Data Upload: The tool offers two upload methods catering to different user needs, which will be explained subsequently. We implemented specific validation logic, such as blocking the upload of temporary or hidden files (e.g. `*.xlsx~`) and discouraging pre-zipped archives in favor of open folder structures to enhance FAIRness.
-    * **Local Upload:** Users can upload local files directly via their browser. The tool verifies file integrity and preserves relative directory paths, which is crucial for complex data structures.
-    * **S3 Access:** For larger datasets, users can provide the credentials for an object store via a S3-compatible bucket.
+![Screenshot of the 5th step of the data submission tool for selecting data files or folders.](web-client-6.png)
 
 ![Screenshot of the 5th step of the data submission tool for selecting a S3 Access.](web-client-7.png)
 
-6. Preview: Before finally submitting the dataset, a citation preview is rendered. This preview provides a quick check if the entered information contains any typos or errors. The submission process completes with confirming once again the DLA.
+
+5. Data Upload: The tool offers two upload methods catering to different user needs, which will be explained subsequently. We implemented specific validation logic, such as blocking the upload of temporary or hidden files (e.g. `*.xlsx~`) and discouraging pre-zipped archives in favor of open folder structures to enhance FAIRness (see **Figure 6 and 7**).
+    * **Local Upload:** Users can upload local files directly via their browser. The tool verifies file integrity and preserves relative directory paths, which is crucial for complex data structures.
+    * **S3 Access:** For larger datasets, users can provide the credentials for an object store via a S3-compatible bucket.
 
 ![Screenshot of the 6th step of the data submission tool for showing final preview and initiating the upload process.](web-client-8.png)
+
+6. Preview: Before finally submitting the dataset, a citation preview is rendered. This preview provides a quick check if the entered information contains any typos or errors. The submission process completes with confirming once again the DLA (see **Figure 8**).
+
 
 ## (2) Integration with PLANTdataHUB
 
