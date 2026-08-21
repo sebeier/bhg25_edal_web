@@ -64,7 +64,7 @@ affiliations:
     ror: 02nv7yv05
     index: 3
   
-  - name: Cluster of Excellence on Plant Sciences (CEPLAS), Faculty of Mathematics and Natural Science, Heinrich Heine University Düseldorf, Düsseldorf, Germany
+  - name: Cluster of Excellence on Plant Sciences (CEPLAS), Faculty of Mathematics and Natural Science, Heinrich Heine University Düsseldorf, Düsseldorf, Germany
     ror: 034waa237
     index: 4 
     
@@ -163,17 +163,17 @@ Parallel to the frontend development, we explored backend integration strategies
 
 ARC validation on the PLANTDataHUB is implemented as a two-tiered system that distinguishes between **tightly integrated, specification-aware validation** and a **generic infrastructure-level fallback**. This design allows both deep platform integration where possible and flexible execution of external tooling where necessary.
 
-#### Existing ARC validation model
+**Existing ARC validation model**
 
 The first tier provides **first-class integration** through *ARC validation packages*. A validation package is a script that defines a set of requirements an ARC must satisfy. When executed, it produces a well-defined set of output artifacts, including a JUnit XML report [@citesAsRelated:ARC_Specifications] for fine-grained test results and a badge summarizing the validation outcome. The badge can be displayed on the ARC landing page and may serve as an interaction point to trigger downstream processes, such as submission to an endpoint repository. Validation packages are enriched with structured metadata, which is used to index, discover, and distribute them via [https://avpr.nfdi4plants.org](https://avpr.nfdi4plants.org). Until now, this level of integration has been limited to validation packages implemented as F# scripts.
 
 The second tier acts as a **generic fallback mechanism**. Any containerized application can be executed within plain CI pipelines, without requiring tight integration with ARC-specific specifications. This approach is particularly relevant when validation relies on third-party libraries that are not available within the .NET ecosystem. Frictionless data validation is one such example, for which we prototyped this CI-based approach during our BioHackathonEU 2025 project [@citesAsRelated:Chadwick2025].
 
-#### Motivation and contribution of this work
+**Motivation and contribution of this work**
 
 To further open the ARC validation package ecosystem, this work extends the first-class validation model to **Python-based validation packages**. Rather than treating Python support as a special case, we implemented it as a general architectural extension that preserves the same integration guarantees previously available only for F#.
 
-#### Requirements for Python validation packages
+**Requirements for Python validation packages**
 
 For Python scripts to qualify as first-class ARC validation packages, they must meet the following requirements:
 
@@ -181,7 +181,7 @@ For Python scripts to qualify as first-class ARC validation packages, they must 
 * **Metadata reuse within the package**: Metadata declared in the script must not only be used for indexing and distribution but also be reusable within the script itself to populate fields in the generated output artifacts.
 * **Generation of specified output files**: Each package must produce `validation_summary.json`, `validation_report.xml`, and `badge.svg` in accordance with the defined specifications.
 
-#### Implementation
+**Implementation**
 
 Self-containment is achieved through the use of [uv inline script dependencies](https://docs.astral.sh/uv/guides/scripts/#declaring-script-dependencies). The PLANTDataHUB execution environment uses *uv* to run Python validation scripts, automatically creating an isolated virtual environment and installing the declared dependencies at runtime:
 
@@ -214,7 +214,7 @@ metadata = yaml.safe_load(PACKAGE_METADATA)
 
 The required output artifacts can then be generated using existing Python libraries. In our proof-of-concept implementation, we used `anybadge` to generate the SVG badge, `junit-xml` to produce the validation report, and Python’s built-in `json` module to create the summary file.
 
-#### Documentation and sustainability
+**Documentation and sustainability**
 
 To support adoption and long-term sustainability, we added an [entry to the DataPLANT knowledge base](https://nfdi4plants.github.io/nfdi4plants.knowledgebase/arc-validation/authoring-validation-packages/).
 This documentation provides comprehensive, unified guidance for authoring ARC validation packages in both F# and Python, lowering the barrier to entry and promoting ecosystem growth.
@@ -223,7 +223,7 @@ This documentation provides comprehensive, unified guidance for authoring ARC va
 
 A dedicated validation package for e!DAL-PGP submissions was created to ensure that data submitted via this route meets the repository's quality standards. The first version of this package checks the mandatory fields of the [DataCite metadata schema](https://datacite-metadata-schema.readthedocs.io) as these align with the requirements of the e!DAL-PGP service. The package will be extended in the future to include recommended and/or optional properties to help users identify missing properties and increase the overall annotation quality of submitted datasets. The package is indexed [here](https://avpr.nfdi4plants.org/package/edal) and an execution on the PLANTDataHUB can be seen [here](https://git.nfdi4plants.org/muehlhaus/ArcPrototype)
 
-#### Automated submission
+**Automated submission**
 
 After successful validation within the PLANTdataHUB, the automated submission process to e!DAL-PGP is initiated through the PLANTdataHUB ARC application authentication service (AAAS). In this stage, AAAS issues a `POST` request to the e!DAL Web Tool endpoint `/submit`. The request payload includes a `gitlab_token`, the `rocrate_link` referencing the Research Object Crate (RO-Crate) to be submitted, and the identifiers `user_id` and `arc_id` that uniquely associate the submission with the corresponding authenticated user and the ARC within the PLANTdataHUB.
 Upon receiving this request, the e!DAL Web Tool stores the submission metadata in an internal database table, creating a unique `submission_id` that is returned in the response to confirm successful registration of the submission. Subsequently, the Auth Service redirects the user’s browser to the e!DAL Web Tool using a `GET` request to `/submit?submission_id=...`, thus initiating the interactive submission phase.
